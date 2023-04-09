@@ -1,0 +1,95 @@
+workers_per_gpu: 8
+distributed: False
+amp_enabled: True
+
+model:
+  name:  minkunet #spvcnn
+
+data:
+  num_classes: 12 #22 #19
+  ignore_label: 0 #0
+  training_size: 19132
+  label_mapping: "./configs/label_mapping/da_kitti_nuscenes/kitti_mapped.yaml"
+
+train:
+  seed: 1588147245
+  deterministic: False
+
+dataset:
+  name: basemodels
+  root: dataset/semantic-kitti
+  num_points: 5000
+  voxel_size: 0.05
+
+num_epochs: 40 #15
+batch_size: 4 #16
+
+criterion:
+  name: cross_entropy
+  ignore_index:  0
+
+optimizer:
+  name: sgd
+  lr: 2.4e-1
+  weight_decay: 1.0e-4
+  momentum: 0.9
+  nesterov: true
+
+scheduler:
+  name: cosine_warmup
+
+###################
+## Data_loader options
+data_path:
+  train_data_loader:
+    data_path: "/mnt/personal/gebreawe/Datasets/RealWorld/semantic-kitti/all_npy_32beam/sequences"
+    split: "train"
+
+  val_data_loader:
+    data_path: "/mnt/personal/gebreawe/Datasets/RealWorld/semantic-kitti/all_npy_32beam/sequences"
+    split: "val"
+
+  test_data_loader:
+    data_path: "/mnt/personal/gebreawe/Datasets/RealWorld/NUSCENES/processed/val"
+    split: "test"
+
+  ssl_data_loader:
+    data_path: "/mnt/personal/gebreawe/Datasets/RealWorld/NUSCENES/processed/train"
+    split: "pseudo"
+
+###################
+## test params
+train_params:
+  model_path: "/home/gebreawe/Code/Segmentation/T-UDA/weights"
+  teacher_model_path: ""
+  student_model_path: ""
+  checkpoint_every_n_steps: 1000
+  max_num_epochs: 40
+  ema_start_epoch: 10
+  eval_every_n_steps: 1000
+  learning_rate: 0.001
+  past: 1
+  future: 1
+  source: 'kitti'
+  target: 'nuscenes'
+  ssl: False
+  rgb: False
+  uda: True
+  time: True
+  intensity: False
+  S_sensor_zpose: 1.79
+  T_sensor_zpose: 0.0 #1.79
+
+test_params:
+  model_path: "/home/gebreawe/Model_checkpoint/Segmentation/T-UDA"
+  past: 0
+  future: 0
+  source: 'kitti'
+  target: 'nuscenes'
+  ssl: False
+  rgb: False
+  uda: True
+  time: True
+  intensity: False
+  S_sensor_zpose: 1.79
+  T_sensor_zpose: 0.0 #1.79

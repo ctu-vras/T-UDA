@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=1               # 1 node
+#SBATCH --ntasks-per-node=1         # 36 tasks per node
+#SBATCH --time=24:00:00               # time limits: 500 hour
+#SBATCH --partition=amdgpu	  # gpufast
+#SBATCH --gres=gpu:1
+#SBATCH --mem=40G
+#SBATCH --output=/home/gebreawe/Model_logs/Segmentation/Spvnas/logs/run_spvnas_f0_0_T11_33_s20_p80_cr0p64_%j.log     # file name for stdout/stderr
+# module
+
+cd ..
+
+ml torchsparse/1.4.0-foss-2021a-CUDA-11.3.1
+
+python train.py configs/semantic_kitti/spvcnn/cr0p64.yaml --distributed False --ssl True
+
