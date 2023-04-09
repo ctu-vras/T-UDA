@@ -2,10 +2,11 @@
 # author: Awet H. Gebrehiwot
 # at 10/13/22
 # --------------------------|
-import numpy as np
 import glob
 import os
 from os.path import join
+
+import numpy as np
 
 semanticKitti_learning_map = {
     0: 0,  # "unlabeled"

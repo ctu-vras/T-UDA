@@ -1,10 +1,9 @@
-from typing import Callable
-
 import torch
 import torch.optim
 from torch import nn
 from torchpack.utils.config import configs
 from torchpack.utils.typing import Dataset, Optimizer, Scheduler
+from typing import Callable
 
 __all__ = [
     'make_dataset', 'make_model', 'make_criterion', 'make_optimizer',

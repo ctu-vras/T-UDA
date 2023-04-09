@@ -27,16 +27,14 @@ def download_url(url, model_dir='~/.torch/', overwrite=False):
 
 
 def spvnas_specialized(net_id, checkpoint, pretrained=True, configs=None, **kwargs):
-
     model = SPVCNN(num_classes=configs.data.num_classes,
                    macro_depth_constraint=1,
                    pres=configs.dataset.voxel_size,
                    vres=configs.dataset.voxel_size).to(
-            'cuda:%d'
-            % dist.local_rank() if torch.cuda.is_available() else 'cpu')
+        'cuda:%d'
+        % dist.local_rank() if torch.cuda.is_available() else 'cpu')
 
     if pretrained:
-
         init = torch.load(checkpoint,
                           map_location='cuda:%d' % dist.local_rank()
                           if torch.cuda.is_available() else 'cpu')['model']
@@ -56,13 +54,13 @@ def spvnas_supernet(net_id, pretrained=True, **kwargs):
         macro_depth_constraint=net_config['macro_depth_constraint'],
         pres=net_config['pres'],
         vres=net_config['vres']).to(
-            'cuda:%d'
-            % dist.local_rank() if torch.cuda.is_available() else 'cpu')
+        'cuda:%d'
+        % dist.local_rank() if torch.cuda.is_available() else 'cpu')
 
     if pretrained:
         init = torch.load(download_url(url_base + net_id + '/init',
                                        model_dir='.torch/spvnas_supernet/%s/'
-                                       % net_id),
+                                                 % net_id),
                           map_location='cuda:%d' % dist.local_rank()
                           if torch.cuda.is_available() else 'cpu')['model']
         model.load_state_dict(init)
@@ -76,15 +74,14 @@ def minkunet(net_id, checkpoint, pretrained=True, configs=None, **kwargs):
         cr = 1.0
     model = MinkUNet(num_classes=configs.data.num_classes,
                      cr=cr).to(
-            'cuda:%d'
-            % dist.local_rank() if torch.cuda.is_available() else 'cpu')
+        'cuda:%d'
+        % dist.local_rank() if torch.cuda.is_available() else 'cpu')
 
     print(checkpoint)
     if pretrained:
-
         init = torch.load(checkpoint,
                           map_location='cuda:%d' % dist.local_rank()
-                          if torch.cuda.is_available() else 'cpu')#['model']
+                          if torch.cuda.is_available() else 'cpu')  # ['model']
         model.load_state_dict(init)
 
     return model
@@ -95,8 +92,8 @@ def spvcnn(net_id, checkpoint, pretrained=True, configs=None, **kwargs):
                    cr=configs.model.cr,
                    pres=configs.dataset.voxel_size,
                    vres=configs.dataset.voxel_size).to(
-            'cuda:%d'
-            % dist.local_rank() if torch.cuda.is_available() else 'cpu')
+        'cuda:%d'
+        % dist.local_rank() if torch.cuda.is_available() else 'cpu')
 
     if pretrained:
         init = torch.load(checkpoint,

@@ -33,7 +33,7 @@ class SparseDynamicConv3d(nn.Module):
         self.d = dilation
         self.kernel = nn.Parameter(torch.zeros(
             self.k, inc, outc)) if self.k > 1 else nn.Parameter(
-                torch.zeros(inc, outc))
+            torch.zeros(inc, outc))
         self.t = transposed
         self.init_weight()
         self.runtime_outc = None

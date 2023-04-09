@@ -36,7 +36,7 @@ def initial_voxelize(z, init_res, after_res):
 def point_to_voxel(x, z):
     if z.additional_features is None or z.additional_features.get(
             'idx_query') is None or z.additional_features['idx_query'].get(
-                x.s) is None:
+        x.s) is None:
         pc_hash = F.sphash(
             torch.cat([
                 torch.floor(z.C[:, :3] / x.s[0]).int() * x.s[0],

@@ -2,14 +2,14 @@
 # author: Awet H. Gebrehiwot
 # at 7/8/22
 # --------------------------|
-import numpy as np
-import os
-import json
 import glob
+import os
+
+import numpy as np
 
 data_path = 'dataset/semantic-kitti'
 list_dir = sorted(os.listdir(data_path))
-l= os.listdir(os.path.join(data_path, list_dir[0]))
+l = os.listdir(os.path.join(data_path, list_dir[0]))
 for c, seq in enumerate(list_dir[11:]):
     frames = sorted(glob.glob(os.path.join(data_path, seq, 'velodyne/*.bin')))
     for id, frame in enumerate(frames):
@@ -24,5 +24,5 @@ for c, seq in enumerate(list_dir[11:]):
             np.save(f"{seq}/lidar/{str(id).zfill(6)}", pcl)
             np.save(f"{seq}/labels/{str(id).zfill(6)}", ss)
 
-    if c >12:
+    if c > 12:
         break

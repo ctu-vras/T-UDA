@@ -2,10 +2,12 @@
 # author: Awet H. Gebrehiwot
 # at 10/13/22
 # --------------------------|
-import numpy as np
 import glob
 import os
 from os.path import join
+
+import numpy as np
+
 from points2spherical2d_corrected import Spherical3DProjection
 
 
@@ -73,7 +75,8 @@ def convert_bin2npy(data_path, dest_path, lidar_transform):
     # self.times = []
     if lidar_transform:
         # initialize the Class with the source lidar config and target number of laser beams
-        spherical_project = Spherical3DProjection(project=True, H=64, W=2048, fov_up=3.0, fov_down=-25.0, target_beams=32)
+        spherical_project = Spherical3DProjection(project=True, H=64, W=2048, fov_up=3.0, fov_down=-25.0,
+                                                  target_beams=32)
 
     for seq in sequeses:
         print(seq)

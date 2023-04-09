@@ -60,12 +60,12 @@ class LinearBlock(nn.Module):
             self.net.bn.weight.data = nas_module.net.bn.bn.weight[:self.outc]
             self.net.bn.running_var.data = nas_module.net.bn.bn.running_var[:
                                                                             self
-                                                                            .
-                                                                            outc]
+                                                                                .
+                                                                                outc]
             self.net.bn.running_mean.data = nas_module.net.bn.bn.running_mean[:
                                                                               self
-                                                                              .
-                                                                              outc]
+                                                                                  .
+                                                                                  outc]
             self.net.bn.bias.data = nas_module.net.bn.bn.bias[:self.outc]
             self.net.bn.num_batches_tracked.data = \
                 nas_module.net.bn.bn.num_batches_tracked
@@ -223,9 +223,9 @@ class ConvolutionBlock(nn.Module):
         self.net.conv.kernel.data = cur_kernel
         self.net.bn.weight.data = nas_module.net.bn.bn.weight[:self.outc]
         self.net.bn.running_var.data = nas_module.net.bn.bn.running_var[:self.
-                                                                        outc]
+            outc]
         self.net.bn.running_mean.data = nas_module.net.bn.bn.running_mean[:self.
-                                                                          outc]
+            outc]
         self.net.bn.bias.data = nas_module.net.bn.bn.bias[:self.outc]
         self.net.bn.num_batches_tracked.data = \
             nas_module.net.bn.bn.num_batches_tracked

@@ -11,15 +11,12 @@ import torch.backends.cudnn
 import torch.cuda
 import torch.nn
 import torch.utils.data
-import yaml
 from torchpack import distributed as dist
-from torchpack.callbacks import InferenceRunner, MaxSaver, Saver
 from torchpack.environ import auto_set_run_dir, set_run_dir
 from torchpack.utils.config import configs
 from torchpack.utils.logging import logger
 
 from core import builder
-from core.callbacks import MeanIoU
 from core.datasets.tuda_dataloader import get_label_name
 from core.trainer_function import TUDATrainer
 

@@ -3,20 +3,17 @@
 # date: 1/11/2022
 
 import copy
-from typing import Any, Callable, Dict
 
 import numpy as np
 import torch
-import torchsparse
-
-from torchsparse import SparseTensor
-
 from torch import nn
 from torch.cuda import amp
-from torchpack.train import Trainer
 from torchpack.utils.typing import Optimizer, Scheduler
-from core.metric_util import per_class_iu, fast_hist_crop
+from torchsparse import SparseTensor
 from tqdm import tqdm
+from typing import Any, Callable, Dict
+
+from core.metric_util import per_class_iu, fast_hist_crop
 
 __all__ = ['TUDATrainer']
 

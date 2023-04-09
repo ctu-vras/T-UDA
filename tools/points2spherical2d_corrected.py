@@ -3,11 +3,11 @@
 # at 9/2/22
 # --------------------------|
 # !/usr/bin/env python3
-import copy
-import math
 import os.path
 
 import numpy as np
+
+
 # import cv2
 # import pptk
 
@@ -81,7 +81,7 @@ class Spherical3DProjection:
             scan = np.fromfile(filename, dtype=np.float32)
             scan = scan.reshape((-1, 4))
             # put in attribute
-            points = scan #[:, 0:3]  # get xyz
+            points = scan  # [:, 0:3]  # get xyz
             if not os.path.exists(filename):
                 raise RuntimeError("Labels path does not exist")
             labels = np.fromfile(filename.replace("velodyne", "labels").replace(".bin", ".label"), dtype=np.int32)
@@ -187,7 +187,6 @@ class Spherical3DProjection:
         #     print("", np.mean(proj_y[i * 2048:(i + 1) * 2048]), np.std(proj_y[i * 2048:(i + 1) * 2048]),
         #           proj_y[i * 2048:(i + 1) * 2048])
 
-
         # scale to image size using angular resolution
         proj_x *= self.proj_W  # in [0.0, W]
         proj_y *= self.proj_H  # in [0.0, H]
@@ -277,4 +276,3 @@ class Spherical3DProjection:
 # filename = "/home/success/Documents/PhD/code/lidar_transfer/minimal/sequences/00/velodyne/000000.bin"
 # spherical_project = Spherical3DProjection()
 # spherical_project.lidar_transform(filename)
-

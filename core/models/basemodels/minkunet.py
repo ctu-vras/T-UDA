@@ -97,7 +97,6 @@ class MinkUNet(nn.Module):
         #     spnn.Conv3d(cs[0], cs[0], kernel_size=3, stride=1),
         #     spnn.BatchNorm(cs[0]), spnn.ReLU(True))
 
-
         self.stage1 = nn.Sequential(
             BasicConvolutionBlock(cs[0], cs[0], ks=2, stride=2, dilation=1),
             ResidualBlock(cs[0], cs[1], ks=3, stride=1, dilation=1),

@@ -2,14 +2,14 @@ import copy
 import glob
 import os
 import os.path
+from os.path import exists
+from os.path import join
 
 import numpy as np
 import yaml
 from torchsparse import SparseTensor
 from torchsparse.utils.collate import sparse_collate_fn
 from torchsparse.utils.quantize import sparse_quantize
-from os.path import exists
-from os.path import join
 
 __all__ = ['Universal_TUDA']
 
@@ -593,7 +593,6 @@ class universalTUDALoader:
 
         # ref_all_pc = pc[sparse_reference_idx]
 
-
         ref_lidar = SparseTensor(ref_feat, ref_pc)
         ref_labels = SparseTensor(ref_labels, ref_pc)
         ref_labels_ = SparseTensor(ref_labels_, ref_pc_)
@@ -605,7 +604,6 @@ class universalTUDALoader:
         inverse_map = SparseTensor(inverse_map, pc_)
         # for calculating loss
         reference_idx = SparseTensor(sparse_reference_idx, pc)
-
 
         if self.ssl_mode and (self.split == 'train'):
             lcw = lcw_[inds]

@@ -1,11 +1,12 @@
 import os
 import os.path
+from os.path import exists
 
 import numpy as np
 from torchsparse import SparseTensor
 from torchsparse.utils.collate import sparse_collate_fn
 from torchsparse.utils.quantize import sparse_quantize
-from os.path import exists
+
 from core.datasets.wod_datalist import wod_train, wod_val, wod_test
 
 __all__ = ['WOD']
@@ -293,7 +294,7 @@ class WODInternal:
                 self.files[index].replace('lidar',
                                           f"predictions_f{self.source}_{self.target}")).reshape(-1)
 
-            lcw_ = np.load(self.files[index].replace('lidar', 
+            lcw_ = np.load(self.files[index].replace('lidar',
                                                      f"probability_f{self.source}_{self.target}")).reshape(-1)
             # TODO: check casting
             # lcw_ = (lcw_ * 100).astype(np.int32)

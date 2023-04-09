@@ -9,14 +9,12 @@ import torch.cuda
 import torch.nn
 import torch.utils.data
 from torchpack import distributed as dist
-from torchpack.callbacks import Callbacks, SaverRestore
 from torchpack.environ import auto_set_run_dir, set_run_dir
 from torchpack.utils.config import configs
 from torchpack.utils.logging import logger
 from tqdm import tqdm
 
 from core import builder
-from core.callbacks import MeanIoU
 from core.datasets.tuda_dataloader import get_label_name
 from core.metric_util import fast_hist_crop, per_class_iu
 from model_zoo import minkunet, spvcnn, spvnas_specialized
@@ -111,7 +109,7 @@ def main() -> None:
 
     label_name = get_label_name(configs.data.label_mapping)
     unique_label = np.asarray(sorted(list(label_name.keys())))[1:] - 1
-    unique_label_str = [label_name[x] for x in unique_label+1]
+    unique_label_str = [label_name[x] for x in unique_label + 1]
     print(unique_label)
     print(unique_label_str)
 

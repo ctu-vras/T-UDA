@@ -1,14 +1,12 @@
 import copy
-from typing import Any, Callable, Dict
 
 import numpy as np
 import torch
-import torchsparse
-
 from torch import nn
 from torch.cuda import amp
 from torchpack.train import Trainer
 from torchpack.utils.typing import Optimizer, Scheduler
+from typing import Any, Callable, Dict
 
 __all__ = ['SemanticKITTITrainer']
 
@@ -59,7 +57,7 @@ class SemanticKITTITrainer(Trainer):
             # print(f"raw_loss:{raw_loss.size()}, lcw: {lcw.F}")
             # extract the values/features from th SpraseTensor using ".F"
             w_loss = raw_loss * torch.squeeze(_lcw)
-            loss = w_loss.mean() #/ 100.0
+            loss = w_loss.mean()  # / 100.0
             # print(f"w_loss:{w_loss.size()}, loss: {loss}")
         elif self.ssl_mode:
             # print(outputs.size(), targets.size())

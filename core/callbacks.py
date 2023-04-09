@@ -1,9 +1,8 @@
-from typing import Any, Dict
-
 import numpy as np
 import torch
 from torchpack import distributed as dist
 from torchpack.callbacks.callback import Callback
+from typing import Any, Dict
 
 __all__ = ['MeanIoU']
 
