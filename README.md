@@ -131,12 +131,12 @@ To evaluate the model performance,
 
 ## Reference
 
-Comming soon ...
+Ourpaper has been accepted to IROS 2023
+
+If you find our work useful in your research, please consider citing our paper: citation coming soon.
 
 ## Acknowledgments
 
-- This work was supported in part by OP VVV MEYS funded project CZ.02.1.01/0.0/0.0/16 019/0000765 “Research Center for
-  Informatics”, and by Grant Agency of the CTU Prague under Project SGS22/111/OHK3/2T/13. Authors want to thank Valeo
-  company for a support.
+- This work was supported in part by OP VVV MEYS funded project CZ.02.1.01/0.0/0.0/16 019/0000765 ``Research Center for Informatics'', and by CTU Prague Project SGS22/111/OHK3/2T/13. K. Zimmermann acknowledges CSF Project 20-29531S. The authors want to thank Valeo for its support
 - We thank for the opensource codebase, [Cylinder3D](https://github.com/xinge008/Cylinder3D)
   and [spvnas](https://github.com/mit-han-lab/spvnas)
